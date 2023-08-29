@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 // Connect to MongoDB
 mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true });
-
+require('dotenv').config();
 // Routes
 app.use('/products', productRoutes);
 
