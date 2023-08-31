@@ -16,6 +16,7 @@ require('dotenv').config();
 // Routes
 app.use('/products', productRoutes);
 
+const Product = require('./models/productModel')
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
