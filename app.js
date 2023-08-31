@@ -1,4 +1,3 @@
-// app.js
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -11,13 +10,19 @@ const app = express();
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("MongoDB connected successfully");
+    })
+    .catch((err) => {
+        console.error("MongoDB connection error:", err);
+    });
+
 require('dotenv').config();
+
 // Routes
 app.use('/products', productRoutes);
 
-const Product = require('./models/productModel')
-// Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
