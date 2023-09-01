@@ -4,7 +4,6 @@ const Product = require('../models/productModel');
 // Create a new product
 const createProduct = async (req, res) => {
     try {
-        console.log("req",req)
         const { name, quantity } = req.body;
         const product = new Product({ name, quantity });
         await product.save();
@@ -17,13 +16,10 @@ const createProduct = async (req, res) => {
 // List all products
 const listProducts = async (req, res) => {
     try {
-        console.log('req',req)
-        console.log('res', res)
         const products = await Product.find();
-        console.log("products", products)
         res.json({ data: {products} });
     } catch (error) {
-        console.log('error',error)
+
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };

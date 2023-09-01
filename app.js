@@ -10,7 +10,6 @@ const app = express();
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-console.log('mongodbURI', mongodbURI)
 mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("MongoDB connected successfully");
